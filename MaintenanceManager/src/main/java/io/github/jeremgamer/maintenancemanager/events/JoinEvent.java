@@ -19,8 +19,8 @@ public class JoinEvent implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onLogin (final PlayerLoginEvent event) {
     	Player player = event.getPlayer();
-    	if (MaintenanceManager.getHandler().isOn() && !player.hasPermission("maintenance.acess")) {    		
-    		event.disallow( org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, MaintenanceManager.getInstance().getConfig().getString("maintenanceMessage").replaceAll("&", "§") );
+    	if (MaintenanceManager.getHandler().isOn() && !player.hasPermission("maintenance.access")) {    		
+    		event.disallow( org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, MaintenanceManager.getInstance().getConfig().getString("maintenanceMessage").replaceAll("&", "Â§") );
     		return;
     	} else if (MaintenanceManager.getHandler().isOn() && player.hasPermission( "maintenance.access" )) {
     		event.allow();
@@ -32,10 +32,10 @@ public class JoinEvent implements Listener {
     public void onJoin (final PlayerJoinEvent event) {
     	Player player = event.getPlayer();
     	if (MaintenanceManager.getHandler().isOn()) 
-    		player.sendMessage( MaintenanceManager.getInstance().getConfig().getString("loginMessage").replaceAll("&", "§") );
+    		player.sendMessage( MaintenanceManager.getInstance().getConfig().getString("loginMessage").replaceAll("&", "Â§") );
     	
     	if (!MaintenanceManager.isUpToDate()) {
-    		player.sendMessage("§c§lYour MaintenanceManager is outdated! \n§6§oGet the latest version here: §e§n" + MaintenanceManager.DOWNLOAD_ADDRESS);
+    		player.sendMessage("Â§cÂ§lYour MaintenanceManager is outdated! \nÂ§6Â§oGet the latest version here: Â§eÂ§n" + MaintenanceManager.DOWNLOAD_ADDRESS);
     	}    	
     }
 
